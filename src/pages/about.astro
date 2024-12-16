@@ -1,6 +1,5 @@
 ---
-import { literal } from "astro:schema";
-
+import "../styles/global.css";
 const pageTitle = "About me";
 
 const identity = {
@@ -15,7 +14,23 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro tbc"];
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
+
+<style define:vars={{ skillColor, fontWeight, textCase }}>
+    h1 {
+        color: purple;
+        font-size: 4rem;
+    }
+    .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+    }
+</style>
 
 <html lang="en">
     <head>
@@ -56,7 +71,7 @@ const goal = 3;
         </ul>
         <p>My skills are:</p>
         <ul>
-            {skills.map((skill) => <li>{skill}</li>)}
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
         </ul>
     </body>
 </html>
